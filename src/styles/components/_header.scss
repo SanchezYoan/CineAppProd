@@ -1,0 +1,81 @@
+.header {
+  h1 {
+    font-size: 3.3rem;
+    text-shadow: 2px 3px 0px $color-1;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+  nav {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-size: 1.3rem;
+
+    ul {
+      display: flex;
+      width: 180px;
+      justify-content: space-between;
+
+      // i {
+      //   display: flex;
+      //   flex-direction: column;
+      //   align-items: center;
+      //   padding: 5px;
+      //   border-radius: 20px;
+
+      //   &:hover {
+      //     animation: label1 0.6s ease forwards;
+      //     background: $black;
+      //     a {
+      //       animation: label2 .6s ease forwards;
+
+      //     }
+        // }
+      //   @keyframes label1 {
+      //     33% {
+      //       transform: scale(110%);
+      //     }
+      //     66% {
+      //       transform: scale(105%);
+      //     }
+      //     100% {
+      //       transform: scale(120%);
+
+      //     }
+      //   }
+
+      //   @keyframes label2 {
+      //     100% {
+      //         transform: translateY(2px);
+      //     }
+      // }
+
+      a {
+        text-decoration: none;
+        color: $white;
+        border-radius: 10px;
+        width: 105px;
+        text-align: center;
+        // margin-right: 5px;
+        // transform: translateY(-200px);
+        padding: 4px 8px;
+        
+        
+        &:visited {
+          text-decoration: none;
+          color: $white;
+        }
+        &:hover {
+          background: $black;
+        }
+      }
+      a.nav-active {
+        background: $color-1;
+
+        &:hover {
+          background: $black;
+        }
+      }
+    }
+  } 
+}
