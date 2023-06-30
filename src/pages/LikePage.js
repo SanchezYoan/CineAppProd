@@ -26,9 +26,7 @@ const LikePage = () => {
       <h2>Coups de coeur</h2>
       <div className="result">
         {listData.length > 0 ? (
-          listData.map((movie, index) => (
-            <Card movie={movie} key={`${index}-${movie.id}`} />
-          ))
+          listData.map((movie, index) => <Card movie={movie} key={movie.id} />)
         ) : (
           <h2>Aucun coup de coeur pour le moment</h2>
         )}
