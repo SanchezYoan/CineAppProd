@@ -8,6 +8,7 @@ const Card = ({ movie }) => {
 
   const data = {
     title: movie.title,
+    id: movie.id,
     date: movie.release_date,
     img: movie.poster_path
       ? "https://image.tmdb.org/t/p/original/" + movie.poster_path
@@ -89,8 +90,8 @@ const Card = ({ movie }) => {
       ? window.localStorage.movies.split(",")
       : [];
 
-    if (!storeData.includes(movie.id.toString())) {
-      storeData.push(movie.id);
+    if (!storeData.includes(data.id.toString())) {
+      storeData.push(data.id);
       window.localStorage.movies = storeData;
     }
   };
@@ -122,15 +123,33 @@ const Card = ({ movie }) => {
       </ul>
       {data.synopsis ? <h3>Synopsis</h3> : ""}
       <p>{data.synopsis}</p>
-      {movie.genre_ids ? (
-        <div className="btn" onClick={() => addStorage()}>
+      {movie.genre_ids &&
+      !window.localStorage.getItem("movies").includes(data.id.toString()) ? (
+        <div
+          className="btn"
+          onClick={() => {
+            addStorage();
+            window.location.reload();
+          }}
+        >
           Ajouter aux coups de coeur
+        </div>
+      ) : movie.genre_ids &&
+        window.localStorage.getItem("movies").includes(data.id.toString()) ? (
+        <div
+          className="btn"
+          onClick={() => {
+            deleteStorage(data.id);
+            window.location.reload();
+          }}
+        >
+          ❤️
         </div>
       ) : (
         <div
           className="btn"
           onClick={() => {
-            deleteStorage(movie.id);
+            deleteStorage(data.id);
             window.location.reload();
           }}
         >

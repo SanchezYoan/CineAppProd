@@ -66,7 +66,7 @@ const Form = () => {
             return 0;
           })
           .map((movie, index) => (
-            <Card movie={movie} key={movie.id} />
+            <Card movie={movie} key={`${movie.id}${index}`} />
           ))}
       </div>
     </div>
