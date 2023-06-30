@@ -124,7 +124,7 @@ const Card = ({ movie }) => {
       {data.synopsis ? <h3>Synopsis</h3> : ""}
       <p>{data.synopsis}</p>
       {movie.genre_ids &&
-      !window.localStorage("movies").includes(data.id.toString()) ? (
+      !window.localStorage.movies.includes(data.id.toString()) ? (
         <div
           className="btn"
           onClick={() => {
@@ -135,7 +135,7 @@ const Card = ({ movie }) => {
           Ajouter aux coups de coeur
         </div>
       ) : movie.genre_ids &&
-        window.localStorage("movies").includes(data.id.toString()) ? (
+        window.localStorage.movies.includes(data.id.toString()) ? (
         <div
           className="btn"
           onClick={() => {
