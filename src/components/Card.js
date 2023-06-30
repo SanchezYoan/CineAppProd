@@ -95,11 +95,15 @@ const Card = ({ movie }) => {
     }
   };
 
-  const deleteStorage = () => {
-    let storedData = window.localStorage.movies.split(",");
-    let newData = storedData.filter((id) => id != movie.id);
-    console.log(newData);
-    window.localStorage.movies = newData;
+  const deleteStorage = (movieId) => {
+    let storedData = window.localStorage.getItem("movies");
+    if (storedData) {
+      let newData = storedData
+        .split(",")
+        .filter((id) => id !== movieId.toString());
+      console.log(newData);
+      window.localStorage.setItem("movies", newData.join(","));
+    }
   };
   return (
     <div className="card">
@@ -126,7 +130,7 @@ const Card = ({ movie }) => {
         <div
           className="btn"
           onClick={() => {
-            deleteStorage();
+            deleteStorage(movie.id);
             window.location.reload();
           }}
         >
