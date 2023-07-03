@@ -16,7 +16,11 @@ const LikePage = () => {
         .get(
           `https://api.themoviedb.org/3/movie/${moviesId[i]}?api_key=d9a485e1fea3cef0a6e4e1e568b65394&language=fr-FR`
         )
-        .then((res) => setListData((listData) => [...listData, res.data]));
+        .then((res) => {
+          if (res.data) {
+            setListData((listData) => [...listData, res.data]);
+          }
+        });
     }
   }, []);
 
@@ -27,7 +31,7 @@ const LikePage = () => {
       <div className="result">
         {listData.length > 0 ? (
           listData.map((movie, index) => (
-            <Card movie={movie} key={`${index}${movie.id}`} />
+            <Card movie={movie} key={`${index}-${movie.id}`} />
           ))
         ) : (
           <h2>Aucun coup de coeur pour le moment</h2>
